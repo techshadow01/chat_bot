@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+.msgBox {
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px 3px;
+    width: fit-content;
+    color: white;
+    padding: 10px;
+}
