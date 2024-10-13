@@ -100,7 +100,7 @@ function App() {
 
         <div className=' flex m-2 justify-end'>
           <div className=' w-3/5 flex justify-end' >
-            <div className='msgBox bg-cyan-500 break-all'>
+            <div className='msgBox bg-cyan-500 '>
               Hello! How can I help you today?
             </div>
           </div>
