@@ -99,7 +99,7 @@ function App() {
       <div className='w-auto p-2 m-auto md:w-3/5 overflow-y-scroll ' style={{ height: 'calc(100vh - 110px)' }}>
 
         <div className=' flex m-2 justify-end'>
-          <div className=' w-[80% flex justify-end' >
+          <div className=' w-3/5 flex justify-end' >
             <div className='msgBox bg-cyan-500 break-all'>
               Hello! How can I help you today?
             </div>
@@ -115,7 +115,7 @@ function App() {
               </div>
             </div>}
 
-            {index % 2 == 1 && <div className=' w-[80% flex justify-end' >
+            {index % 2 == 1 && <div className=' w-3/5 flex justify-end' >
               <div className='msgBox bg-cyan-500 break-words'>
                 {item}
               </div>
