@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     let darkmode = localStorage.getItem('darkmode')
-    darkmode !== "active" ? enableDarkmode() : disableDarkmode()
+    darkmode == "active" ? enableDarkmode() : disableDarkmode()
   }, [])
 
 
