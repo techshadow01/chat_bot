@@ -26,7 +26,7 @@ function App() {
 
   useEffect(() => {
     let darkmode = localStorage.getItem('darkmode')
-    darkmode == "active" ? enableDarkmode() : disableDarkmode()
+    darkmode !== "active" ? enableDarkmode() : disableDarkmode()
   }, [])
 
 
@@ -54,6 +54,7 @@ function App() {
   const enableDarkmode = (e) => {
     ld.src = night;
     document.body.style.backgroundColor = '#000000';
+    footer.style.backgroundColor = '#000000';
     intext.style.color = '#FFFFFF';
     send2.current.getElementsByTagName("img")[0].src = dsend;
     localStorage.setItem('darkmode', 'active')
@@ -62,6 +63,7 @@ function App() {
   const disableDarkmode = (e) => {
     ld.src = day;
     document.body.style.backgroundColor = '#FFFFFF';
+    footer.style.backgroundColor = '#FFFFFF';
     intext.style.color = '#000000';
     send2.current.getElementsByTagName("img")[0].src = send;
     localStorage.setItem('darkmode', null)
@@ -90,8 +92,8 @@ function App() {
         </button>
       </div>
 
-      <div className='fixed bottom-0 w-full flex items-center justify-center'>
-        <div className=' w-full border-2  border-cyan-500 rounded-full p-3 mb-1 flex items-center md:w-3/5 relative'>
+      <div id="footer" className='fixed bottom-0 w-full flex items-center justify-center'>
+        <div className=' w-full border-2 border-cyan-500 rounded-full p-3 mb-1 flex items-center md:w-3/5 relative'>
           <input id="intext" className='w-11/12 outline-none break-words bg-transparent' type="text" placeholder='ask me anything...' value={msg} onChange={getmsg} />
           <button ref={send2} className='w-11 h-11 absolute border border-cyan-500 rounded-full p-1 right-1 cursor-pointer' style={msg == "" ? { backgroundColor: "transparent" } : { backgroundColor: "#06B6D4" }} onClick={sendmsg} disabled={msg == ""} ><img src={send} alt="" /></button>
         </div>
@@ -99,8 +101,8 @@ function App() {
       <div className='w-auto p-2 m-auto md:w-3/5 overflow-y-scroll ' style={{ height: 'calc(100vh - 110px)' }}>
 
         <div className=' flex m-2 justify-end'>
-          <div className=' w-3/5 flex justify-end' >
-            <div className='msgBox bg-cyan-500 '>
+          <div className=' w-[80%] flex justify-end' >
+            <div className='msgBox bg-cyan-500 break-all'>
               Hello! How can I help you today?
             </div>
           </div>
@@ -115,7 +117,7 @@ function App() {
               </div>
             </div>}
 
-            {index % 2 == 1 && <div className=' w-3/5 flex justify-end' >
+            {index % 2 == 1 && <div className=' w-[80%] flex justify-end' >
               <div className='msgBox bg-cyan-500 break-words'>
                 {item}
               </div>
