@@ -82,7 +82,7 @@ function App() {
 
   return (
     <>
-      <div className=' bg-cyan-500 h-14 w-full flex items-center justify-around gap-3 border border-white'>
+      <div className=' bg-cyan-500 h-14 w-full flex items-center justify-around gap-3 border-y border-white'>
         <div className='flex items-center justify-center gap-3'>
           <span><img src={logo} alt="" /></span>
           <div className='font-bold text-white'>Chatbot</div>
