@@ -103,7 +103,7 @@ export const TypewriterEffectSmooth = ({
                   {char}
                 </span>
               ))}
-              <span className="dark:text-white text-black ml-3"></span>
+              <span className="dark:text-white text-black ml-[2vw]"></span>
             </div>)
           );
         })}
