@@ -13,3 +13,23 @@
     color: white;
     padding: 10px;
 }
+
+.typeb{
+    height: 40px;
+    width: 130px;
+    border: 1.5px solid #06B6D4;
+    border-radius: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: large;
+    color: white;
+
+    cursor: pointer;
+}
+
+.typeb:hover{
+    background-color: #0aa9c5;
+}
