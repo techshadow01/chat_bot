@@ -98,15 +98,7 @@ function App() {
   function TypewriterEffectSmoothDemo() {
     const words = [
       {
-        text: "Hello!",
-        className: "text-cyan-500 dark:text-cyan-500 ",
-      },
-      {
-        text: "how can i help you today",
-        className: "text-cyan-500 dark:text-cyan-500 ",
-      },
-      {
-        text: "?",
+        text: "Hello! how can i help you today ?",
         className: "text-cyan-500 dark:text-cyan-500 ",
       },
     ];
