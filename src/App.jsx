@@ -103,7 +103,7 @@ function App() {
       },
     ];
     return (
-      (<div className="flex flex-col items-center justify-center h-[100%] m-auto">
+      (<div className="flex flex-col items-center justify-center ">
         <TypewriterEffectSmooth words={words} />
         <motion.div
 
