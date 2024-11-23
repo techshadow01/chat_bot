@@ -147,7 +147,7 @@ function App() {
             <AnimatePresence>
               {!arrow1t && <a href="https://alice-ai-ten.vercel.app/">
                 <motion.button
-                  className="absolute bg-[#B31373] text-white font-bold border-white border p-2 rounded-full left-[-20px] top-8"
+                   className="absolute  text-cyan-500 font-bold border-cyan-500 border-2 p-2 rounded-lg right-[40px] top-8 bg-transparent hover:bg-cyan-500 hover:text-white "
                   initial={{ opacity: 0, y: -10 }}
                   animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
                   exit={{ opacity: 0, y: -10 }}
