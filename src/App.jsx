@@ -1,7 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
-import { delay, motion } from "motion/react"
+import { delay, motion, AnimatePresence } from "motion/react"
 import axios from "axios"
 import './components.css';
+import arrow1 from './assets/arrow1.svg'
 import logo from './assets/logo.svg'
 import send from './assets/send.svg'
 import dsend from './assets/dsend.svg'
@@ -10,12 +11,13 @@ import night from './assets/night.svg'
 
 import { TypewriterEffectSmooth } from './type.jsx'
 
-
 function App() {
   const [msg, setmsg] = useState("");
   const [msgArr, setmsgArr] = useState([])
   const send2 = useRef();
   const chat = useRef();
+  const [arrow, setarrow] = useState("false")
+  const [arrow1t, setarrow1t] = useState("false")
   let url = import.meta.env.VITE_URL;
 
   const getres = async (e) => {
@@ -59,6 +61,10 @@ function App() {
     setmsg(e)
   }
 
+  const showa1 = () => {
+    setarrow1t(!arrow1t)
+  }
+
   //darkmode
   const enableDarkmode = (e) => {
     ld.src = night;
@@ -93,6 +99,8 @@ function App() {
     else {
       disableDarkmode();
     }
+
+    setarrow(!arrow);
   }
 
   function TypewriterEffectSmoothDemo() {
@@ -103,7 +111,7 @@ function App() {
       },
     ];
     return (
-      (<div className="flex flex-col items-center justify-center h-[40rem] ">
+      (<div className="flex flex-col items-center justify-center h-[100%] m-auto">
         <TypewriterEffectSmooth words={words} />
         <motion.div
 
@@ -120,23 +128,47 @@ function App() {
     );
   }
 
-
   return (
     <>
       <div className=' bg-cyan-500 h-14 w-full flex items-center justify-around gap-3 border-y border-white'>
+        <link rel="stylesheet" href="" />
         <div className='flex items-center justify-center gap-3'>
-          <span><img src={logo} alt="" /></span>
-          <div className='font-bold text-white'>Chatbot</div>
+          <a href='./'><div className='flex items-center justify-center gap-3'>
+            <span><img src={logo} alt="" /></span>
+            <div className='font-bold text-white'>Chatbot</div>
+          </div></a>
+          <div className='relative inline-block'>
+            <motion.div
+              animate={arrow1t ? { rotate: 0 } : { rotate: 180 }}
+              onClick={showa1}
+            >
+              <img src={arrow1} alt="" />
+            </motion.div>
+            <AnimatePresence>
+              {!arrow1t && <a href="https://alice-ai-ten.vercel.app/">
+                <motion.button
+                  className="absolute bg-[#B31373] text-white font-bold border-white border p-2 rounded-full left-[-20px] top-8"
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.5 } }}
+                  exit={{ opacity: 0, y: -10 }}
+                >AliceAI</motion.button>
+              </a>}
+            </AnimatePresence>
+          </div>
         </div>
-        <button onClick={toggle}>
+        <motion.button
+
+          whileTap={{ scale: [null, 0.6] }}
+
+          onClick={toggle}>
           <img id="ld" src={day} alt="" />
-        </button>
-      </div>
+        </motion.button>
+      </div >
 
       <div id="footer" className='fixed bottom-0 w-full flex items-center justify-center'>
         <div className=' w-full border-2 border-cyan-500 rounded-full p-3 mb-1 flex items-center md:w-3/5 relative'>
           <input id="intext" className='w-11/12 outline-none break-words bg-transparent' type="text" placeholder='ask me anything...' value={msg} onChange={getmsg} />
-          <button ref={send2} className='w-11 h-11 absolute border border-cyan-500 rounded-full p-1 right-1 cursor-pointer' style={msg == "" ? { backgroundColor: "transparent" } : { backgroundColor: "#06B6D4" }} onClick={sendmsg} disabled={msg == ""} ><img src={send} alt="" /></button>
+          <motion.button ref={send2} whileTap={{ scale: [null, 0.8, 1] }} className='w-11 h-11 absolute border border-cyan-500 rounded-full p-1 right-1 cursor-pointer' style={msg == "" ? { backgroundColor: "transparent" } : { backgroundColor: "#06B6D4" }} onClick={sendmsg} disabled={msg == ""} ><img src={send} alt="" /></motion.button>
         </div>
       </div >
       <div className='w-auto p-2 m-auto md:w-3/5 overflow-y-scroll ' style={{ height: 'calc(100vh - 110px)' }}>
@@ -147,13 +179,13 @@ function App() {
           return <div ref={chat} key={index} className=' flex m-2' style={index % 2 == 0 ? { justifyContent: 'left' } : { justifyContent: 'right' }}>
 
             {index % 2 == 0 && <div className=' w-3/5 flex justify-start' >
-              <div className='msgBox bg-cyan-500 break-words'>
+              <div className='msgBox bg-cyan-500 rounded-tl-[0px] break-words'>
                 {item}
               </div>
             </div>}
 
             {index % 2 == 1 && <div className=' w-[80%] flex justify-end' >
-              <div className='msgBox  bg-gray-400 break-words'>
+              <div className='msgBox bg-gray-400 rounded-tr-[30px] break-words'>
                 {item}
               </div>
             </div>
